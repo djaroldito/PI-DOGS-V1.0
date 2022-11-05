@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styled from 'styled-components'
 import { Link } from "react-router-dom";
 import Pagination from "./pagination";
-import { chargeAll } from "../../redux/actions";
+import { deleteId } from './../../redux/actions';
 
 const HomeCard = () => {
   const filtered = useSelector((state) => state.filtered);
@@ -41,7 +41,9 @@ const HomeCard = () => {
     setCurrentPage(numeroPagina) //------para poder usarlo en las formulas de index y saber cortar el arreglo dende corresponda segun la pagina.
   }
 
-
+  const handleClick = (id) =>{
+    Dispatch(deleteId(id))
+  }
 
   return (
     <main>
@@ -55,7 +57,7 @@ const HomeCard = () => {
       <CardsContainer>
           {currentCards.map((item) => (
           <CardDiv key={item.id}>
-           
+           <Button onClick={()=>handleClick(item.id)}>ELIMINAR</Button>
             <Name>{item.name}</Name>
             <ImgDiv>
               <img src={item.image} alt={item.name} />
@@ -67,13 +69,7 @@ const HomeCard = () => {
               </p>
             ) : null}
              {item.breed_group? <p> <b>Group: </b>{item.breed_group}.</p>: null}
-             {/* {item.breed_group ? 
-              <p>
-                <b>Groups: </b>
-                {item.breed_group}.
-              </p>
-             : null} */}
-              <p>
+             <p>
                 <b>weight: </b>
               {item.weight} KG
             </p>
@@ -160,6 +156,30 @@ export const CardDiv = styled.div`
     margin-top: auto;
     box-shadow: 3px 2px 0 0 black;
   }
+`;
+
+const Button = styled.button `
+position: relative;
+ padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.2s;
+display: inline-flex;
+background: #d4d4d4;
+  color: black;
+  justify-content: center;
+  &:hover {
+   
+      background-color: red;
+      transition: 0.5s;
+      box-shadow: 1px 1px 1px 1px lightcyan;
+    border: 1px  lightcyan;
+    color: white
+   }
+
 `;
 
 

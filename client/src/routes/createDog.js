@@ -52,7 +52,7 @@ const CreateDog = () => {
       errors.height = "Height-max must be highter than height-min";
     }
      else if (completed.heightmin < 0) {
-      errors.height = 'no acepta num negativos'
+      errors.height = 'no acepta num negativos' 
     }
 
     if (!completed.weightmin || !completed.weightmax) {

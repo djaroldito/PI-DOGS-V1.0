@@ -78,9 +78,5 @@ position: relative;
 
 
   
-  const SearchDiv = styled.div`
-    width: 40%;
-    text-align: center;
-   
-  `;
+
   

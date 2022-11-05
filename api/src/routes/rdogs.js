@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 
   //-------SI ENTRO POR QUERY----------
   if (req.query.name) {
-    try {
+    
 
       let {name} = req.query
       console.log(name)
@@ -21,19 +21,18 @@ router.get('/', async (req, res) => {
       if(result.length >= 1){
       res.status(200).json(result)}
       else{
-        throw new Error(error)
+        res.status(400).json('no dogs try again');
       }
-    } catch (error) {
-      res.status(400).json(error);
-    }
-  } 
+    } 
+   
   //------------SI NO ENTRO POR QUERY DEVUELVO TODOS---------
   else {
     try {
       let total = await dogsTOTALinfo();
+     // console.log(total)
       res.status(200).json(total);
     } catch (error) {
-      throw new Error(error);
+      res.status(400).json(error);
     }
   }
 });
@@ -141,5 +140,22 @@ router.delete('/', async(req,res)=>{
     
   }
 })
+
+//---------------ACTUALIZAR----------------
+router.put('/',async(req,res)=>{
+  let{ name,height,weight,life_span} = req.body
+  try {
+    await Dog.update(
+      {name,height,weight,life_span},
+      {
+        where:{
+          name: name
+        }}
+    )
+    res.status(200).json('update ok')
+  } catch (error) {
+    }})
+
+
 
 module.exports = router;

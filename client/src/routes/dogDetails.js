@@ -44,6 +44,7 @@ const DogDetail = () =>{
             <p><b>Height: </b>{detail.height} metric</p>
             <p><b>Weight: </b>{detail.weight} KG.</p>
             <p><b>Life Span: </b>{detail.life_span}</p>
+
             <Link to="/home">
             <button>Volver</button></Link>
         </ContainerDiv>

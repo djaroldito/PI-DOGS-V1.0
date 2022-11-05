@@ -27,7 +27,12 @@ function rootReducer(state = initialState, action){
                 return{
                     ...state,
                     dogDetail:{}
-                }     
+                }  
+            case 'DELETE_ID':
+                return{
+                    ...state,
+                    filtered: state.filtered.filter(el=> el.id !== action.payload)
+                }
             
             case GET_DETAIL:
                 return {

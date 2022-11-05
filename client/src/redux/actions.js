@@ -64,7 +64,7 @@ export function getByName(name) {
      .then((res) => {dispatch({ type: GET_BY_NAME, payload: res.data });
       })
       .catch((err) => {
-       alert ('Breed not found, try again...');
+       alert (err.response.data);
       });
   };
 }
@@ -86,6 +86,12 @@ export function getGroups() {
     return function (dispatch){
       console.log(payload)
       dispatch({type: GET_BY_GROUP, payload})
+    }
+  }
+
+  export function deleteId(payload){
+    return function (dispatch){
+      dispatch({type:'DELETE_ID', payload})
     }
   }
 

@@ -16,7 +16,7 @@ export const GET_BY_GROUP= 'GET_BY_GROUP'
 export function getDogs() {
   return async function (dispatch) {
     try {
-      var res = await axios.get("http://localhost:3001/dogs");
+      var res = await axios.get("/dogs");
         return dispatch({
         type: GET_DOGS,
         payload: res.data,
@@ -29,7 +29,7 @@ export function getDogs() {
 
 export function getDetail(id) {
   return function (dispatch) {
-    axios.get(`http://localhost:3001/dogs/${id}`)
+    axios.get(`/dogs/${id}`)
       .then((res) => {dispatch({ type: GET_DETAIL, payload: res.data });
       })
       .catch((err) => {
@@ -41,7 +41,7 @@ export function getDetail(id) {
 export function getTemperaments() {
   return async function (dispatch) {
     try {
-      var res = await axios.get("http://localhost:3001/temperaments");
+      var res = await axios.get("/temperaments");
       return dispatch({
         type: GET_TEMPERAMENTS,
         payload: res.data,
@@ -60,7 +60,7 @@ export function getTemperaments() {
 
 export function getByName(name) {
   return function (dispatch) {    
-    return axios.get(`http://localhost:3001/dogs?name=${name}`)
+    return axios.get(`/dogs?name=${name}`)
      .then((res) => {dispatch({ type: GET_BY_NAME, payload: res.data });
       })
       .catch((err) => {
@@ -72,7 +72,7 @@ export function getByName(name) {
 export function getGroups() {
   return async function (dispatch) {
     try {
-      var res = await axios.get("http://localhost:3001/groups");
+      var res = await axios.get("/groups");
       return dispatch({
         type: GET_GROUPS,
         payload: res.data,

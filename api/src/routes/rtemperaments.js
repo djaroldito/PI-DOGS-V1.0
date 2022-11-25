@@ -26,8 +26,7 @@ router.get('/',async (req, res) => {
                     where: { name: el}
                 });
             }
-        });
-       
+        });       
         eachTemperament = await Temperament.findAll();
         res.status(200).json(eachTemperament);
     } catch (error) {

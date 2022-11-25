@@ -51,7 +51,7 @@ const CreateDog = () => {
     } else if (parseInt(completed.heightmax) <= parseInt(completed.heightmin)) {
       errors.height = "Height-max must be highter than height-min";
     }
-     else if (completed.heightmin < 0) {
+     else if  (completed.heightmin < 0) {
       errors.height = 'no acepta num negativos' 
     }
 

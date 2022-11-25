@@ -117,7 +117,7 @@ router.post("/", async (req, res) => {
       });
   
 
-    await dogCREATED[0].setTemperaments(temperament); // relaciono ID genres al juego creado
+    await dogCREATED[0].setTemperaments(temperament); // relaciono ID temperaments al dog creado
     //console.log(dogCREATED[0])
 
     res.status(200).json(dogCREATED);

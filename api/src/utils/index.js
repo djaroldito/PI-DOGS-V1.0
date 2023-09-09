@@ -21,7 +21,7 @@ const dogsDBinfo = async ()=>{
 const dogsAPIinfo = async ()=>{
     
         let response = await axios.get(URL);
-           
+            //console.log(response.data.slice(0,2))
             const conv = (data) =>{
             if(data)
             return data.split(', ')
@@ -33,7 +33,7 @@ const dogsAPIinfo = async ()=>{
                     return 'null'
                 }
             }
-                        
+                      
             const dogsREADY = response.data 
              .map(d => {
                 
@@ -48,17 +48,20 @@ const dogsAPIinfo = async ()=>{
                     country_code: conv1(d.country_code),
                     bred_for: conv1(d.bred_for),
                     breed_group:conv1(d.breed_group),
-                    image: d.image.url
-
+                    image:`https://cdn2.thedogapi.com/images/${d.reference_image_id}.jpg`
+                    
                      }
              });
         
+            // console.log(dogsREADY)
              return dogsREADY
             }
 
 const dogsTOTALinfo = async () => {
     const apiInfo = await dogsAPIinfo();
+    console.log(apiInfo)
     const DBInfo = await dogsDBinfo();
+    console.log(DBInfo)
     const infoTotal = [...DBInfo, ...apiInfo];
     return infoTotal;
 };

@@ -105,7 +105,8 @@ const CreateDog = () => {
       })
     );
     if (Object.values(errors).length === 0) {
-     // console.log(finalForm);
+      console.log(completed);
+      console.log(finalForm);
       axios.post("/dogs", finalForm);
       setCreate(!create);
       setCompleted(initialState);

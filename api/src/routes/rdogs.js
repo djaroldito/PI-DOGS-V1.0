@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
   else {
     try {
       let total = await dogsTOTALinfo();
-     // console.log(total)
+      //console.log(total)
       res.status(200).json(total);
     } catch (error) {
       res.status(400).json(error);

@@ -53,10 +53,17 @@ function rootReducer(state = initialState, action){
                         };    
 
             case GET_BY_GROUP:
-                return{
+                             
+                        //-----//ESTO ANDA MAL!!!!!!!--------
+                    if(state.filtered.find(el=>el.breed_group === action.payload) === undefined){
+                        return alert('no hay')
+                      }
+                    
+                        return{          
                      ...state,
-                      filtered: state.dogs.filter(el=> el.breed_group? el.breed_group.includes(action.payload): null)
-                       }            
+                      filtered: state.filtered.filter(el=> el.breed_group? el.breed_group.includes(action.payload):null )
+                         }
+                            
 
             case GET_BY_TEMPERAMENTS:
                       return{

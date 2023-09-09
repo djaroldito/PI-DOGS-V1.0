@@ -11,8 +11,14 @@ const SearchBar = () =>{
     });
     
     const handlechange = (e) =>{
-        setinput({[e.target.name]:e.target.value})
+       setinput((prev)=>({
+        ...prev, [e.target.name]:e.target.value
+       }))
         }
+
+      
+
+
 
     const handleClick = (e) =>{
         e.preventDefault()
